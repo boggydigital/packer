@@ -12,11 +12,13 @@ import (
 	"time"
 )
 
-func Pack(root, from, to string, tpw nod.TotalProgressWriter) error {
+func Pack(from, to string, tpw nod.TotalProgressWriter) error {
 
 	if from == "" || to == "" {
 		return errors.New("packing requires from and to dirs")
 	}
+
+	root, _ := filepath.Split(from)
 
 	efn := fmt.Sprintf(
 		"%s.tar.gz",
